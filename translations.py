@@ -20,6 +20,8 @@ TRANSLATIONS = {
         
         # View cooldown command
         'cooldown_current': "⏱️ The current cooldown for /deepthroat is **{time_str}** ({seconds}s).",
+        'cooldown_view_ready': "✅ The command is ready to use!",
+        'cooldown_view_remaining': "⏱️ Remaining time: **{time_str}**.",
         
         # Set language command
         'language_set': "✅ Language set to **{language}** for this server!",
@@ -50,7 +52,8 @@ TRANSLATIONS = {
         'cmd_settarget_param': "The user who will receive the pings",
         'cmd_setcooldown_desc': "Set the cooldown for the /deepthroat command (Admin only)",
         'cmd_setcooldown_param': "Cooldown duration in seconds (minimum: 1, maximum: 86400)",
-        'cmd_viewcooldown_desc': "Display the current cooldown for the /deepthroat command",
+        'cmd_viewsetcooldown_desc': "Display the configured cooldown for the server",
+        'cmd_viewcooldown_desc': "Display the remaining cooldown before the next use",
         'cmd_setlanguage_desc': "Set the bot language for this server (Admin only)",
         'cmd_setlanguage_param': "Language (en for English, fr for French)",
         'cmd_deepthroat_desc': "Send a private notification to the target user",
@@ -71,6 +74,8 @@ TRANSLATIONS = {
         
         # View cooldown command
         'cooldown_current': "⏱️ Le cooldown actuel pour /gorgeprofonde est de **{time_str}** ({seconds}s).",
+        'cooldown_view_ready': "✅ La commande est prête à être utilisée !",
+        'cooldown_view_remaining': "⏱️ Temps restant : **{time_str}**.",
         
         # Set language command
         'language_set': "✅ Langue définie sur **{language}** pour ce serveur !",
@@ -101,7 +106,8 @@ TRANSLATIONS = {
         'cmd_settarget_param': "L'utilisateur qui recevra les pings",
         'cmd_setcooldown_desc': "Définir le cooldown de la commande /gorgeprofonde (Admin seulement)",
         'cmd_setcooldown_param': "Durée du cooldown en secondes (minimum: 1, maximum: 86400)",
-        'cmd_viewcooldown_desc': "Afficher le cooldown actuel de la commande /gorgeprofonde",
+        'cmd_viewsetcooldown_desc': "Afficher le cooldown configuré pour le serveur",
+        'cmd_viewcooldown_desc': "Afficher le temps restant avant la prochaine utilisation",
         'cmd_setlanguage_desc': "Définir la langue du bot pour ce serveur (Admin seulement)",
         'cmd_setlanguage_param': "Langue (en pour Anglais, fr pour Français)",
         'cmd_deepthroat_desc': "Envoie une notification privée à l'utilisateur cible",

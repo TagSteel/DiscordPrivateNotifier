@@ -14,7 +14,8 @@ Click the link above to invite the bot to your server and start using it immedia
 - **`/settarget`** (Admin): Set the user who will receive notifications
 - **`/setcooldown`** (Admin): Configure cooldown duration
 - **`/setlanguage`** (Admin): Set bot language (en/fr)
-- **`/viewcooldown`**: Display current cooldown
+- **`/viewcooldown`**: Display remaining cooldown
+- **`/viewsetcooldown`**: Display configured cooldown
 - **`/deepthroat`** or **`/gorgeprofonde`**: Send a private notification to the target user
 
 ## Setup
