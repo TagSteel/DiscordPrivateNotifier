@@ -1,6 +1,6 @@
 # DiscordPrivateNotifier
 
-[![GitHub Release](https://img.shields.io/github/v/release/TagSteel/DiscordDMBot?display_name=release)](https://github.com/TagSteel/DiscordDMBot/releases/latest)
+[![GitHub Release](https://img.shields.io/github/v/release/TagSteel/DiscordPrivateNotifier?display_name=release&include_prereleases)](https://github.com/TagSteel/DiscordPrivateNotifier/releases/latest)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 A production-ready Discord bot that allows server members to trigger a private notification (DM) to a designated target user, with per-server configuration, cooldown control, and bilingual support (English/French).
