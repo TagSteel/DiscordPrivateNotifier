@@ -1,75 +1,95 @@
-# GlouGlouBot - Discord Bot
+# DiscordPrivateNotifier
 
-Discord bot with slash commands to send private notifications to a designated user.
+[![GitHub Release](https://img.shields.io/github/v/release/TagSteel/DiscordDMBot?display_name=release)](https://github.com/TagSteel/DiscordDMBot/releases/latest)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-## Quick Start
+A production-ready Discord bot that allows server members to trigger a private notification (DM) to a designated target user, with per-server configuration, cooldown control, and bilingual support (English/French).
 
-**➕ [Add GlouGlouBot to your Discord server](https://discord.com/oauth2/authorize?client_id=1473607008627200133&permissions=8&integration_type=0&scope=bot+applications.commands)**
+## Key Features
 
-Click the link above to invite the bot to your server and start using it immediately!
+- **Per-server target configuration** with admin-only setup
+- **Per-server cooldown management** to prevent spam
+- **Bilingual experience** (`en` / `fr`) for messages and command flow
+- **Slash-command based UX** (Discord Application Commands)
+- **JSON persistence** for lightweight, file-based configuration
 
-## Features
+## Command Reference
 
-- **Multi-language support**: English (default) and French
-- **`/settarget`** (Admin): Set the user who will receive notifications
-- **`/setcooldown`** (Admin): Configure cooldown duration
-- **`/setlanguage`** (Admin): Set bot language (en/fr)
-- **`/viewcooldown`**: Display remaining cooldown
-- **`/viewsetcooldown`**: Display configured cooldown
-- **`/deepthroat`** or **`/gorgeprofonde`**: Send a private notification to the target user
+| Command | Access | Description |
+|---|---|---|
+| `/settarget <user>` | Admin | Set the user who receives private notifications |
+| `/setcooldown <seconds>` | Admin | Set cooldown duration (1 to 86400 seconds) |
+| `/setlanguage <en\|fr>` | Admin | Set bot language for the current server |
+| `/viewsetcooldown` | Everyone | Show configured cooldown |
+| `/viewcooldown` | Everyone | Show remaining cooldown time |
+| `/deepthroat` | Everyone | Trigger private notification to target |
+| `/gorgeprofonde` | Everyone | French alias of the notification command |
 
-## Setup
+## Requirements
 
-### Prerequisites
+- Python **3.8+**
+- A Discord application with a bot user
 
-- Python 3.8+
-- Discord Developer account
+## Installation
 
-### Installation
-
-1. **Create Discord Application**
-   - Go to [Discord Developer Portal](https://discord.com/developers/applications)
-   - Create a new application
-   - Enable these intents in the Bot section:
-     - SERVER MEMBERS INTENT
-     - MESSAGE CONTENT INTENT
-     - PRESENCE INTENT
-   - Copy the bot token
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/TagSteel/DiscordDMBot.git
+   cd DiscordDMBot
+   ```
 
 2. **Install dependencies**
    ```bash
    pip install -r requirements.txt
    ```
 
-3. **Configure environment**
-   - Create a `.env` file:
-     ```
-     DISCORD_TOKEN=your_token_here
-     ```
+3. **Create environment file**
+   Create a `.env` file in the project root:
+   ```env
+   DISCORD_TOKEN=your_bot_token_here
+   ```
 
-4. **Invite bot to server**
-   - In OAuth2 > URL Generator, select:
-     - Scopes: `bot`, `applications.commands`
-     - Permissions: Send Messages, Use Slash Commands, Read Messages
-
-5. **Run the bot**
+4. **Run the bot**
    ```bash
    python app.py
    ```
 
-## Usage
+## Discord Application Setup
 
-1. Admin sets target: `/settarget @user`
-2. Anyone can use: `/deepthroat` or `/gorgeprofonde`
-3. Target receives a private message with details
+In the [Discord Developer Portal](https://discord.com/developers/applications):
 
-## Configuration
+1. Create a new application and add a bot.
+2. Enable required privileged intents:
+   - **SERVER MEMBERS INTENT**
+   - **MESSAGE CONTENT INTENT**
+   - **PRESENCE INTENT**
+3. Generate an invite URL with:
+   - Scopes: `bot`, `applications.commands`
+   - Permissions: `Send Messages`, `Use Slash Commands`, `Read Messages/View Channels`
 
-- **Language**: `/setlanguage en` or `/setlanguage fr`
-- **Cooldown**: `/setcooldown 60` (seconds)
-- Settings are saved in `config.json`
+## Configuration & Data
 
-## Technologies
+- Configuration is stored in `config.json`.
+- Data is organized per guild (server):
+  - target user ID
+  - cooldown value
+  - selected language
 
-- discord.py v2.3
-- Python 3.8+
+## Project Structure
+
+- `app.py` — main bot logic and slash command handlers
+- `translations.py` — i18n dictionary and localized text formatting
+- `config.json` — runtime configuration persistence
+- `requirements.txt` — Python dependencies
+
+## Notes
+
+- This bot uses server-level cooldown, not per-user cooldown.
+- If the target user disables DMs, notification delivery may fail.
+- Admin permissions are required for setup commands.
+
+## License
+
+This project is licensed under the MIT License. See [LICENSE](LICENSE).
+
+
