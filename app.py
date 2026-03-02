@@ -192,9 +192,9 @@ async def setcooldown(interaction: discord.Interaction, seconds: int):
         ephemeral=True
     )
 
-@bot.tree.command(name="viewcooldown", description="Display the current cooldown for the /deepthroat command")
+@bot.tree.command(name="viewsetcooldown", description="Display the configured cooldown for the server")
 @app_commands.guild_only()
-async def viewcooldown(interaction: discord.Interaction):
+async def viewsetcooldown(interaction: discord.Interaction):
     """
     Command to display the current configured cooldown for the server
     """
@@ -212,6 +212,33 @@ async def viewcooldown(interaction: discord.Interaction):
         get_text(guild_id, 'cooldown_current', time_str=time_str, seconds=cooldown),
         ephemeral=True
     )
+
+@bot.tree.command(name="viewcooldown", description="Display the remaining cooldown before the next use")
+@app_commands.guild_only()
+async def viewcooldown(interaction: discord.Interaction):
+    """
+    Command to display the remaining cooldown for the server
+    """
+    if interaction.guild is None:
+        await interaction.response.send_message("This command can only be used in a server.", ephemeral=True)
+        return
+
+    guild_id = interaction.guild.id
+    can_use, remaining = check_cooldown(guild_id)
+    
+    if can_use:
+        await interaction.response.send_message(
+            get_text(guild_id, 'cooldown_view_ready'),
+            ephemeral=True
+        )
+    else:
+        # Format time in a readable way
+        time_str = format_time(remaining, guild_id)
+        
+        await interaction.response.send_message(
+            get_text(guild_id, 'cooldown_view_remaining', time_str=time_str),
+            ephemeral=True
+        )
 
 @bot.tree.command(name="setlanguage", description="Set the bot language for this server (Admin only)")
 @app_commands.describe(language="Language (en for English, fr for French)")
